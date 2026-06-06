@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Vidyashree ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    overflow:hidden;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fad0c4,#ffdde1);
+    position:relative;
+}
+
+/* Floating Hearts */
+.heart{
+    position:absolute;
+    color:white;
+    font-size:20px;
+    animation:float 10s linear infinite;
+    opacity:.7;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(100vh) scale(.5);
+        opacity:0;
+    }
+    20%{
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-100px) scale(1.5);
+        opacity:0;
+    }
+}
+
+/* Glass Card */
+.login-card{
+    width:380px;
+    max-width:90%;
+    padding:35px;
+    text-align:center;
+    border-radius:25px;
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(20px);
+    box-shadow:0 8px 32px rgba(0,0,0,.2);
+    border:1px solid rgba(255,255,255,.3);
+    z-index:10;
+}
+
+.login-card h1{
+    color:white;
+    margin-bottom:10px;
+    font-size:2rem;
+}
+
+.login-card p{
+    color:white;
+    margin-bottom:25px;
+    line-height:1.5;
+}
+
+.quote{
+    min-height:50px;
+    font-style:italic;
+    color:#fff;
+    margin-bottom:20px;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    outline:none;
+    margin-bottom:15px;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    background:#ff4d6d;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+#message{
+    margin-top:15px;
+    color:white;
+    font-weight:bold;
+}
+
+.success{
+    animation:pulse .8s infinite alternate;
+}
+
+@keyframes pulse{
+    from{
+        transform:scale(1);
+    }
+    to{
+        transform:scale(1.08);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-card">
+    <h1>Vidyashree ❤️</h1>
+
+    <p>
+        Every beautiful love story begins with a secret...
+    </p>
+
+    <div class="quote" id="quote"></div>
+
+    <input
+        type="password"
+        id="password"
+        placeholder="Enter the secret password ❤️"
+    >
+
+    <button onclick="login()">
+        Unlock My Heart ❤️
+    </button>
+
+    <div id="message"></div>
+</div>
+
+<script>
+
+// Password
+const PASSWORD = "I Love You Hendati";
+
+// Quotes
+const quotes = [
+    "You are my favorite notification ❤️",
+    "Every moment with you is special 🌹",
+    "My world became brighter because of you ✨",
+    "Forever starts with us 💕",
+    "You are my happiest chapter ❤️",
+    "Every heartbeat whispers your name 💖",
+    "You are my today and all my tomorrows 🌹",
+    "My heart smiles because of you ❤️"
+];
+
+// Rotate Quotes
+let q = 0;
+const quoteElement = document.getElementById("quote");
+
+function rotateQuotes(){
+    quoteElement.innerHTML = quotes[q];
+    q = (q + 1) % quotes.length;
+}
+rotateQuotes();
+setInterval(rotateQuotes,3000);
+
+// Floating Hearts
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+
+    heart.innerHTML = ["❤️","💖","💕","💘","💝"][Math.floor(Math.random()*5)];
+
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = (Math.random()*25+15)+"px";
+    heart.style.animationDuration = (Math.random()*5+5)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },10000);
+}
+
+setInterval(createHeart,300);
+
+// Login
+function login(){
+
+    const entered =
+        document.getElementById("password").value.trim();
+
+    const message =
+        document.getElementById("message");
+
+    if(entered === PASSWORD){
+
+        message.classList.add("success");
+
+        message.innerHTML =
+        "💖 Access Granted My Love 💖<br>Loading Surprise...";
+
+        createHeartBurst();
+
+        setTimeout(()=>{
+            window.location.href =
+            "https://adi1042003.github.io/Ganu/GanuWifeBday.html";
+        },2500);
+
+    }else{
+
+        const errors = [
+            "❌ Wrong password ❤️ Try again",
+            "🌹 Not quite, my love...",
+            "💖 Hint: It's a special nickname",
+            "💕 Try the name I lovingly call you"
+        ];
+
+        message.innerHTML =
+        errors[Math.floor(Math.random()*errors.length)];
+    }
+}
+
+// Success Burst
+function createHeartBurst(){
+
+    for(let i=0;i<60;i++){
+
+        const heart =
+            document.createElement("div");
+
+        heart.className="heart";
+
+        heart.innerHTML="❤️";
+
+        heart.style.left="50%";
+        heart.style.top="50%";
+
+        heart.style.position="absolute";
+
+        heart.style.transform=
+        `translate(
+        ${(Math.random()-0.5)*600}px,
+        ${(Math.random()-0.5)*600}px
+        )`;
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },3000);
+    }
+}
+
+// Enter key support
+document
+.getElementById("password")
+.addEventListener("keypress",function(e){
+
+    if(e.key==="Enter"){
+        login();
+    }
+});
+</script>
+
+</body>
+</html>
